@@ -10,7 +10,7 @@ const LogIn = () => {
                 <label>Password:
                     <input type="password" id="username" name="username"/>
                 </label><br/>
-                <button type="submit">Register</button>
+                <button type="submit">Log-in</button>
             </form>
         </div>
     );

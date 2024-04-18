@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Welcome from "./pages/Welcome";
 import Register from "./pages/Register";
+import LogIn from "./pages/LogIn";
 
 export default function App() {
     return (
@@ -11,7 +12,7 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Welcome />}></Route>
                     <Route path="register" element={<Register />}></Route>
-                    <Route path="login" element={<Register />}></Route>
+                    <Route path="login" element={<LogIn />}></Route>
                 </Routes>
             </BrowserRouter>
         </>
