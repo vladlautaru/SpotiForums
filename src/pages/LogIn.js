@@ -1,6 +1,6 @@
-import React from 'react';
-import {useState} from "react";
+import React, { useState } from 'react';
 import axios from 'axios';
+import './LogIn.css';
 
 const LogIn = () => {
     const [username, setUsername] = useState('');
@@ -27,7 +27,7 @@ const LogIn = () => {
             });
             setData(response.data.message);
             if (response.data.message === 'Correct login') {
-                alert(`username: ${username} password: ${password}`)
+                alert(`username: ${username} password: ${password}`);
             }
         } catch (error) {
             alert('Error:' + error);
@@ -35,14 +35,15 @@ const LogIn = () => {
     };
 
     return (
-        <div>
+        <div className="form-container">
+            <h1>Log In</h1>
             <form onSubmit={handleClick}>
                 <label>Username:
-                    <input type="text" id="username" name="username" value={username} onChange={handleUsernameChange}/>
-                </label><br/>
+                    <input type="text" id="username" name="username" value={username} onChange={handleUsernameChange} required />
+                </label><br />
                 <label>Password:
-                    <input type="password" id="username" name="username" value={password} onChange={handlePasswordChange}/>
-                </label><br/>
+                    <input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} required />
+                </label><br />
                 <button type="submit">Log-in</button>
             </form>
         </div>
