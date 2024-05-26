@@ -1,8 +1,19 @@
-import React from 'react';
-import {Link, Outlet} from 'react-router-dom';
+import React, {useContext, useEffect} from 'react';
+import {Link, Outlet, useNavigate} from 'react-router-dom';
 import './Welcome.css';
+import {AuthContext} from "../AuthContext";
 
 const Welcome = () => {
+    const auth = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const name = JSON.stringify(auth).slice(20, -2);
+        if (!(name === 'null')) {
+            navigate('/board');
+        }
+    }, [auth, navigate]);
+
     return (
         <div className="div">
             <p className="p1"><b>Spoti<span className="highlight">Forums</span></b></p>

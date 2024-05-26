@@ -10,10 +10,10 @@
         opacity: 1;
     }
 }
-
+/*
 body {
-    background-color: #000;
-    color: #fff;
+    background-color: #000000;
+    color: #ffffff;
     font-family: 'Lato', sans-serif;
     margin: 0;
     padding: 0;
@@ -21,6 +21,26 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+*/
+
+.form_title_div {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.form_title {
+    font-family: 'Lato', sans-serif;
+    color: #ffffff;
+    font-size: 40px;
+    margin-top: 0;
+}
+
+.form_title_2 {
+    font-family: 'Lato', sans-serif;
+    color: #32CD32;
+    font-size: 40px;
+    margin-top: 0;
 }
 
 .form-container {
@@ -39,6 +59,7 @@ body {
 }
 
 label {
+    font-family: 'Lato', sans-serif;
     display: block;
     margin-bottom: 10px;
     font-size: 14px;
@@ -46,7 +67,8 @@ label {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="email"] {
     width: calc(100% - 20px);
     padding: 10px;
     margin-top: 5px;
@@ -59,7 +81,7 @@ input[type="password"] {
 
 button {
     font-family: 'Lato', sans-serif;
-    color: #fff;
+    color: #ffffff;
     background-color: #32CD32;
     border-radius: 8px;
     border: none;
@@ -70,13 +92,13 @@ button {
 }
 
 button:hover {
-    color: #000;
-    background-color: #fff;
+    color: #000000;
+    background-color: #ffffff;
 }
 
 h1 {
     font-size: 70px;
-    color: #fff;
+    color: #ffffff;
     text-align: center;
     transition: 0.4s;
 }

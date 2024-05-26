@@ -11,6 +11,7 @@
     }
 }
 
+/*
 body {
     background-color: #000;
     color: #fff;
@@ -22,13 +23,32 @@ body {
     align-items: center;
     height: 100vh;
 }
+*/
+.form_title_div {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.form_title {
+    font-family: 'Lato', sans-serif;
+    color: #ffffff;
+    font-size: 40px;
+    margin-top: 0;
+}
+
+.form_title_2 {
+    font-family: 'Lato', sans-serif;
+    color: #32CD32;
+    font-size: 40px;
+    margin-top: 0;
+}
 
 .form-container {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #000;
+    background-color: #333333;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);

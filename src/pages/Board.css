@@ -1,0 +1,147 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.top_bar_div {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #333333; /* Lighter grey line */
+}
+
+.logo {
+    font-family: 'Lato', sans-serif;
+    color: #ffffff;
+    font-size: 70px;
+    margin: 10px;
+}
+
+.logo2 {
+    font-family: 'Lato', sans-serif;
+    color: #32CD32;
+    font-size: 70px;
+    margin-top: 0;
+}
+
+.auth {
+    margin: 10px;
+    display: flex;
+    flex-direction: row; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    justify-content: center; /* Center children vertically */
+    gap: 10px; /* Optional: Add some space between elements */
+}
+
+.auth_2 {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    justify-content: center; /* Center children vertically */
+    gap: 10px; /* Optional: Add some space between elements */
+}
+
+.credentials {
+    font-family: 'Lato', sans-serif;
+    color: #32CD32;
+    font-size: 15px;
+    top: 50%;
+    font-weight: bold;
+}
+
+.log_out_button {
+    font-family: 'Lato', sans-serif;
+    color: #ffffff;
+    background-color: #B22222;
+    border-radius: 8px;
+    border: none;
+    height: 30px;
+    width: 60px;
+    transition: 0.4s;
+}
+
+.log_out_button:hover {
+    color: #000000;
+    background-color: #ffffff;
+}
+
+.log_in_button {
+    font-family: 'Lato', sans-serif;
+    color: #ffffff;
+    background-color: #32CD32;
+    border-radius: 8px;
+    border: none;
+    height: 30px;
+    width: 60px;
+    transition: 0.4s;
+}
+
+.log_in_button:hover {
+    color: #000000;
+    background-color: #ffffff;
+}
+
+.register_button {
+    font-family: 'Lato', sans-serif;
+    color: #000000;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: none;
+    height: 30px;
+    width: 60px;
+    transition: 0.4s;
+}
+
+.register_button:hover {
+    color: #ffffff;
+    background-color: #32CD32;
+}
+
+.post {
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.post:hover {
+    background-color: #333333;
+}
+
+.post_title {
+    font-family: 'Lato', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    color: #32CD32;
+}
+
+.post_author {
+    font-family: 'Lato', sans-serif;
+    color: #ffffff;
+}
+
+.post_date {
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.add_div {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-left: 10px;
+}
+
+.add_post_button {
+    font-family: 'Lato', sans-serif;
+    color: #ffffff;
+    background-color: #32CD32;
+    border-radius: 16px;
+    border: none;
+    height: 40px;
+    width: 70px;
+    transition: 0.4s;
+}
+
+.add_post_button:hover {
+    color: #000000;
+    background-color: #ffffff;
+}

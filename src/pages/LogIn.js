@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
+import {useState, useContext} from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './LogIn.css';
+import { AuthContext } from '../AuthContext';
+import './LogIn.css'
 
 const LogIn = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [data, setData] = useState(null);
+    const {setAuth}  = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
@@ -27,7 +33,10 @@ const LogIn = () => {
             });
             setData(response.data.message);
             if (response.data.message === 'Correct login') {
-                alert(`username: ${username} password: ${password}`);
+                setAuth({ username });
+                navigate('/board');
+            } else if (response.data.message === 'Incorrect login') {
+                alert('Incorrect login. Try again')
             }
         } catch (error) {
             alert('Error:' + error);
@@ -36,14 +45,16 @@ const LogIn = () => {
 
     return (
         <div className="form-container">
-            <h1>Log In</h1>
+            <div className="form_title_div">
+                <span className="form_title"><b>Log<span className="form_title_2"> in!</span></b></span>
+            </div>
             <form onSubmit={handleClick}>
-                <label>Username:
-                    <input type="text" id="username" name="username" value={username} onChange={handleUsernameChange} required />
-                </label><br />
-                <label>Password:
-                    <input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} required />
-                </label><br />
+                <label>Username:<br/>
+                    <input type="text" id="username" name="username" value={username} placeholder="Username" onChange={handleUsernameChange}/>
+                </label><br/>
+                <label>Password:<br/>
+                    <input type="password" id="username" name="username" value={password} placeholder="Password" onChange={handlePasswordChange}/>
+                </label><br/>
                 <button type="submit">Log-in</button>
             </form>
         </div>

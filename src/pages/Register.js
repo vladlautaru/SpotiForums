@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
+import {useState} from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './Register.css';  // Ensure you import the CSS file
+import './Register.css'
 
 const Register = () => {
     const [username, setUsername] = useState('');
@@ -8,6 +10,8 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [retype, setRetype] = useState('');
     const [data, setData] = useState('');
+
+    const navigate = useNavigate();
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
@@ -38,8 +42,17 @@ const Register = () => {
                 },
             });
             setData(response.data.message);
-            if (response.data.message === 'User registered successfully') {
-                alert(`username: ${username} email: ${email} password: ${password}`);
+            switch (response.data.message) {
+                case 'User registered successfully':
+                    alert(`Account registered successfully`);
+                    navigate('/login');
+                    break;
+                case 'Passwords do not match':
+                    alert(`Passwords do not match. Try again`);
+                    break;
+                case 'Username already exists':
+                    alert('Username already exists. Try again');
+                    break;
             }
         } catch (error) {
             alert('Error:' + error);
@@ -48,20 +61,26 @@ const Register = () => {
 
     return (
         <div className="form-container">
-            <h1>Register</h1>
+            <div className="form_title_div">
+                <span className="form_title"><b>Register<span className="form_title_2"> now!</span></b></span>
+            </div>
             <form onSubmit={handleClick}>
-                <label>Username:
-                    <input type="text" id="username" name="username" value={username} onChange={handleUsernameChange} required />
-                </label><br />
-                <label>Email:
-                    <input type="email" id="email" name="email" value={email} onChange={handleEmailChange} required />
-                </label><br />
-                <label>Password:
-                    <input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} required />
-                </label><br />
-                <label>Retype password:
-                    <input type="password" id="retype" name="retype" value={retype} onChange={handleRetypeChange} required />
-                </label><br />
+                <label>Username:<br/>
+                    <input type="text" id="username" name="username" placeholder="Username" value={username}
+                           onChange={handleUsernameChange}/>
+                </label><br/>
+                <label>Email:<br/>
+                    <input type="email" id="email" name="email" value={email} placeholder="Email"
+                           onChange={handleEmailChange}/>
+                </label><br/>
+                <label>Password:<br/>
+                    <input type="password" id="password" name="password" value={password} placeholder="Password"
+                           onChange={handlePasswordChange}/>
+                </label><br/>
+                <label>Retype password:<br/>
+                    <input type="password" id="retype" name="retype" value={retype} placeholder="Retype password"
+                           onChange={handleRetypeChange}/>
+                </label><br/>
                 <button type="submit">Register</button>
             </form>
         </div>
