@@ -1,7 +1,8 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { AuthContext } from '../AuthContext'; // Adjust the path as needed
 import { useNavigate } from "react-router-dom";
 import "./Board.css";
+import axios from "axios";
 
 const Board = () => {
     const { auth, logOut } = useContext(AuthContext);
@@ -20,7 +21,21 @@ const Board = () => {
         navigate('/register');
     }
 
-    const spawnPosts = (posts) => {
+    const handleAddPostButton = () => {
+        navigate('/add_post');
+    }
+
+    const getPosts = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/getposts');
+            return response.data;
+        } catch (error) {
+            alert('Error:' + error);
+            return [];
+        }
+    }
+
+    const spawnPosts = (posts, navigate) => {
         const container = document.getElementById("container");
 
         container.innerHTML = '';
@@ -31,27 +46,29 @@ const Board = () => {
             postDiv.className = 'post';
 
             postDiv.addEventListener('click', () => {
-                window.location.href = 'https://www.google.com';
+                navigate(`/post/${post.post_id}`);
             });
 
             postDiv.innerHTML = `
-            <span class="post_date">${post.date}</span>
+            <span class="post_date">${post.post_date_posted ?? 'Unknown Date'}</span>
             <br>
-            <span class="post_title">${post.title}</span>
-            <span class="post_author"> by ${post.author}</span>
+            <span class="post_title">${post.post_title ?? 'Untitled'}</span>
+            <span class="post_author"> by ${post.post_author ?? 'Anonymous'}</span>
         `;
             container.appendChild(postDiv);
         });
     }
 
+    const [posts, setPosts] = useState([]);
+
     useEffect(() => {
-        // Call spawnPosts function here
-        const posts = [
-            { title: 'Post 1', author: "post_author", date:"25 05 2024"},
-            { title: 'Post 2', author: "post_author_2", date:"25 05 2024"},
-            // Add more posts as needed
-        ];
-        spawnPosts(posts);
+        const fetchPosts = async () => {
+            const postsData = await getPosts();
+            setPosts(postsData);
+            spawnPosts(postsData, navigate);
+        };
+
+        fetchPosts();
     }, []); // Empty dependency array to only run once on component mount
 
     return (
@@ -77,9 +94,11 @@ const Board = () => {
                 )}
             </div>
             <div className="add_div">
-                <button className="add_post_button">Add post</button>
+                <button className="add_post_button" onClick={handleAddPostButton}>Add post</button>
             </div>
-            <div id="container"></div>
+            <div id="container">
+
+            </div>
         </>
     );
 };

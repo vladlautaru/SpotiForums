@@ -104,6 +104,11 @@ body, html {
 
 .post:hover {
     background-color: #333333;
+    cursor: pointer;
+}
+
+.post:active {
+    background-color: #555555;
 }
 
 .post_title {
